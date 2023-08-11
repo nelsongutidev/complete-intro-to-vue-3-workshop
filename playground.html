@@ -6,5 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Playground — Complete Intro to Vue 3</title>
   </head>
-  <body></body>
+  <body>
+    <h1>Nelson Test App</h1>
+    <div id="app">
+      <pre>{{message.length}}</pre>
+      <p v-if="message.length % 2 === 0">Even: {{message}}</p>
+      <p v-else>Odd: {{message}}</p>
+
+      <ul>
+        <li v-for="number in listOfNumbers">
+          <p>{{number.name.toUpperCase()}}</p>
+          <p>{{number.id * Math.random()}}</p>
+        </li>
+      </ul>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const { createApp } = Vue;
+
+      const app = createApp({
+        data() {
+          return {
+            message: "The app is working!!",
+            listOfNumbers: [
+              { id: 1, name: "one" },
+              { id: 2, name: "two" },
+              { id: 3, name: "three" },
+              { id: 4, name: "four" },
+              { id: 5, name: "five" },
+            ],
+          };
+        },
+      });
+
+      app.mount("#app");
+    </script>
+  </body>
 </html>
